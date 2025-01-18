@@ -25,7 +25,7 @@ The repo provides 2 reproduction cases, one running a simple binary which loops 
 This resembles how we detected the issue on our Dart server. The docker image uses the VM flag `--old_gen_heap_size=200` but it leaks anyway.
 
 1. Build the docker image: `docker build -t dart-isolate-issue --pull .`
-2. Run the server: `docker run -p 8080:8080 dart-isolate-issue`
+2. Run the server: `docker run --rm -p 8080:8080 dart-isolate-issue`
 3. Navigate to `https://{HOST}/isolate=true` and `https://{HOST}/isolate=false` to verify it's working.
 4. Run the `stress_server.dart` script with an argument `true` and observe the memory leak. It will call the endpoint sequentially and it will trigger the memory leak.
 5. Relaunching the docker container is advised before stressing again without the isolate (arg=false), so that the memory is reset.
