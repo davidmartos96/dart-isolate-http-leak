@@ -17,6 +17,9 @@ FROM scratch
 COPY --from=build /runtime/ /
 COPY --from=build /app/bin/server /app/bin/
 
+# old_gen_heap_size is in MB. We want it to run on a small machine
+ENV DART_VM_OPTIONS=--old_gen_heap_size=200
+
 # Start server.
 EXPOSE 8080
 CMD ["/app/bin/server"]

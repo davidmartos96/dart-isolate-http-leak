@@ -1,4 +1,4 @@
-name: cloud_run_isolate_issue
+name: isolate_issue
 description: A sample command-line application.
 version: 1.0.0
 # repository: https://github.com/my_org/my_repo
@@ -9,6 +9,7 @@ environment:
 # Add regular dependencies here.
 dependencies:
   functions_framework: ^0.4.0
+  http: ^1.2.2
   shelf: ^1.0.0
 
 dev_dependencies:
