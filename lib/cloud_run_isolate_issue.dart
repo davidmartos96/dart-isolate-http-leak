@@ -16,14 +16,18 @@ Future<Map<String, dynamic>> computeJsonBody() async {
   final start = DateTime.now();
   return await Isolate.run(() {
     return {
-      'list': randomList(),
-      'start': start,
+      'random_string': randomString(7500),
+      'start': start.toIso8601String(),
     };
   });
 }
 
 List<int> randomList() {
   return List.generate(200, (_) => r.nextInt(100));
+}
+
+String randomString(int l) {
+  return String.fromCharCodes(List.generate(l, (_) => r.nextInt(100)));
 }
 
 final r = Random();
